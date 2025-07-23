@@ -2371,15 +2371,6 @@
     <bcf:datasource type="file" datatype="bibtex">lni-paper-example-de.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">Ez10</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">AB00</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">ABC01</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">Az09</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">Wa14</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">Wa14b</bcf:citekey>
-    <bcf:citekey order="7" intorder="1">Gl06</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">GI19</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">XX14</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">
