@@ -1,0 +1,162 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+
+%% Dies gibt Warnungen aus, sollten veraltete LaTeX-Befehle verwendet werden
+\RequirePackage[l2tabu, orthodox]{nag}
+
+\documentclass[utf8,biblatex]{bremerhaven_lni}
+
+
+%%Name der bib-Datei, die eingebunden werden soll
+\bibliography{lni-paper-example-de}
+
+%% Schöne Tabellen mittels \toprule, \midrule, \bottomrule
+\usepackage{booktabs}
+
+%% Zu Demonstrationszwecken
+\usepackage[math]{blindtext}
+\usepackage{mwe}
+
+%% BibLaTeX-Sonderkonfiguration,
+%% falls man schnell eine existierende Bibliographie wiederverwenden will, aber nicht die .bib-Datei händisch anpassen möchte.
+%% Bitte \iffalse und \fi entfernen, dann ist diese Konfiguration aktiviert.
+
+\iffalse
+\AtEveryBibitem{%
+  \ifentrytype{article}{%
+  }{%
+    \clearfield{doi}%
+    \clearfield{issn}%
+    \clearfield{url}%
+    \clearfield{urldate}%
+  }%
+  \ifentrytype{inproceedings}{%
+  }{%
+    \clearfield{doi}%
+    \clearfield{issn}%
+    \clearfield{url}%
+    \clearfield{urldate}%
+  }%
+}
+\fi
+
+\begin{document}
+
+%%% Mehrere Autoren werden durch \and voneinander getrennt.
+%%% Die Fußnote enthält die Adresse sowie eine E-Mail-Adresse.
+%%% Das optionale Argument (sofern angegeben) wird für die Kopfzeile verwendet.
+\title[Ein Kurztitel]{Ein sehr langer Titel über mehrere Zeilen mit sehr vielen Worten und noch mehr Buchstaben}
+%%%\subtitle{Untertitel / Subtitle} % falls benötigt
+
+
+%%% username1, Matrikelnummer1, username2, Matrikelnummer2
+%%%
+%%%
+\author[Vorname1 Nachname1, Vorname2 Nachname2]
+{Vorname1 Nachname1, Vorname2 Nachname2 \\ 
+Hochschule Bremerhaven}
+\startpage{1} % Beginn der Seitenzählung für diesen Beitrag
+\editor{Oliver Radfelder und Karin Vosseberg}    % Namen der Herausgeber
+\booktitle{Modul Technikfolgenabschätzung - SoSe 2025} % Name des Tagungsband; optional Kurztitel
+%\yearofpublication{2017}
+%%%\lnidoi{18.18420/provided-by-editor-02} % Falls bekannt
+\maketitle
+
+\begin{abstract}
+Der Abstract ist ein kurzer Überblick über die Arbeit der zwischen 70 und 150 Wörtern lang sein und das Wichtigste enthalten sollte.
+Die Formatierung erfolgt automatisch innerhalb des abstract-Bereichs.
+\end{abstract}
+
+\begin{keywords}
+Liste von wichtigsten Keyworten mit Komma getrennt
+\end{keywords}
+
+\section{Einleitung}
+kurze Einführung in das Thema
+
+\section{weitere Überschrift}
+%blindtext rausnehmen und durch Text ersetzen
+\blindtext
+
+\section{Beispiele für die Nutzung spezieller Textelemente}
+Hier kommen ein paar Beispiele für Textelemente wie Literaturhinweise, Abbildungen, Tabellen und Verlinkungen zu den jeweiligen Elementen.
+
+\subsection{Literaturverzeichnis}
+Der letzte Abschnitt zeigt ein beispielhaftes Literaturverzeichnis für Bücher mit einem Autor \cite{Ez10} und zwei AutorInnen \cite{AB00}, einem Beitrag in Proceedings mit drei AutorInnen \cite{ABC01}, einem Beitrag in einem LNI Band mit mehr als drei AutorInnen \cite{Az09}, zwei Bücher mit den jeweils selben vier AutorInnen im selben Erscheinungsjahr \cite{Wa14} und \cite{Wa14b}, ein Journal \cite{Gl06}, eine Website \cite{GI19} bzw.\ anderweitige Literatur ohne konkrete AutorInnenschaft \cite{XX14}.
+Es wird biblatex verwendet, da es UTF8 sauber unterstützt und \href{https://github.com/gi-ev/LNI/issues/5}{im Gegensatz zu lni.bst} keine Fehler beim bibtexen auftreten.
+
+Formatierung und Abkürzungen werden für die Referenzen \texttt{book}, \texttt{inbook}, \texttt{proceedings}, \texttt{inproceedings}, \texttt{article}, \texttt{online} und \texttt{misc} automatisch vorgenommen.
+Mögliche Felder für Referenzen können der Beispieldatei \texttt{lni-paper-example-de.bib} entnommen werden.
+Andere Referenzen sowie Felder müssen allenfalls nachträglich angepasst werden.
+
+\subsection{Abbildungen}
+\Cref{fig:demo} zeigt eine Abbildung.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.8\textwidth]{log_black_full_HSBHV_2022.jpg}
+  \caption{Demographik}
+  \label{fig:demo}
+\end{figure}
+
+\subsection{Tabellen}
+\Cref{tab:demo} zeigt eine Tabelle.
+
+\begin{table}
+\centering
+\begin{tabular}{lll}
+\toprule
+Überschriftsebenen & Beispiel & Schriftgröße und -art \\
+\midrule
+Titel (linksbündig) & Der Titel \ldots & 14 pt, Fett\\
+Überschrift 1 & 1 Einleitung & 12 pt, Fett\\
+Überschrift 2 & 2.1 Titel & 10 pt, Fett\\
+\bottomrule
+\end{tabular}
+\caption{Die Überschriftsarten}
+\label{tab:demo}
+\end{table}
+
+\subsection{Programmcode}
+Die LNI-Formatvorlage verlangt die Einrückung von Listings vom linken Rand.
+In der \texttt{lni}-Dokumentenklasse ist dies für die \texttt{verbatim}-Umgebung realisiert.
+
+\begin{verbatim}
+public class Hello {
+    public static void main (String[] args) {
+        System.out.println("Hello World!");
+    }
+}
+\end{verbatim}
+
+Alternativ kann auch die \texttt{lstlisting}-Umgebung verwendet werden.
+
+\Cref{L1} zeigt uns ein Beispiel, das mit Hilfe der \texttt{lstlisting}-Umgebung realisiert ist.
+
+\begin{lstlisting}[caption={Beschreibung}, label=L1, language=Java]
+public class Hello {
+    public static void main (String[] args) {
+        System.out.println("Hello World!");
+    }
+}
+\end{lstlisting}
+
+\subsection{Formeln und Gleichungen}
+
+Die korrekte Einrückung und Nummerierung für Formeln ist bei den Umgebungen
+\texttt{equation} und \texttt{align} gewährleistet.
+
+\begin{equation}
+  1=4-3
+\end{equation}
+und
+\begin{align}
+  2&=7-5\\
+  3&=2-1
+\end{align}
+
+%% \bibliography{lni-paper-example-de.tex} ist hier nicht erlaubt: biblatex erwartet dies bei der Preambel
+%% Starten Sie "biber paper", um eine Biliographie zu erzeugen.
+\printbibliography
+
+\end{document}
