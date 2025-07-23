@@ -1,0 +1,213 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+
+%% Dies gibt Warnungen aus, sollten veraltete LaTeX-Befehle verwendet werden
+\RequirePackage[l2tabu, orthodox]{nag}
+
+\documentclass[utf8,biblatex]{bremerhaven_lni}
+
+
+%%Name der bib-Datei, die eingebunden werden soll
+\bibliography{lni-paper-example-de}
+
+%% Schöne Tabellen mittels \toprule, \midrule, \bottomrule
+\usepackage{booktabs}
+
+%% Zu Demonstrationszwecken
+\usepackage[math]{blindtext}
+\usepackage{mwe}
+
+%% BibLaTeX-Sonderkonfiguration,
+%% falls man schnell eine existierende Bibliographie wiederverwenden will, aber nicht die .bib-Datei händisch anpassen möchte.
+%% Bitte \iffalse und \fi entfernen, dann ist diese Konfiguration aktiviert.
+
+\iffalse
+\AtEveryBibitem{%
+  \ifentrytype{article}{%
+  }{%
+    \clearfield{doi}%
+    \clearfield{issn}%
+    \clearfield{url}%
+    \clearfield{urldate}%
+  }%
+  \ifentrytype{inproceedings}{%
+  }{%
+    \clearfield{doi}%
+    \clearfield{issn}%
+    \clearfield{url}%
+    \clearfield{urldate}%
+  }%
+}
+\fi
+
+\begin{document}
+
+%%% Mehrere Autoren werden durch \and voneinander getrennt.
+%%% Die Fußnote enthält die Adresse sowie eine E-Mail-Adresse.
+%%% Das optionale Argument (sofern angegeben) wird für die Kopfzeile verwendet.
+\title[Ein Kurztitel]{Automatisierte Entscheidungsprozesse mit KI. Eine Technikfolgenabschätzung am Beispiel von ChatGPT-Integrationen mit n8n}
+%%%\subtitle{Untertitel / Subtitle} % falls benötigt
+
+
+%%% username1, Matrikelnummer1, username2, Matrikelnummer2
+%%%
+%%%
+\author[Kasem Rashrash 41398, Yunes Ghanbari 40639]
+{Kasem Rashrash 41398, Yunes Ghanbari 40639\\ 
+Hochschule Bremerhaven}
+\startpage{1} % Beginn der Seitenzählung für diesen Beitrag
+\editor{Oliver Radfelder und Karin Vosseberg}    % Namen der Herausgeber
+\booktitle{Modul Technikfolgenabschätzung - SoSe 2025} % Name des Tagungsband; optional Kurztitel
+%\yearofpublication{2017}
+%%%\lnidoi{18.18420/provided-by-editor-02} % Falls bekannt
+\maketitle
+
+\begin{abstract}
+Im Rahmen dieser Arbeit wird der Einsatz von Künstlicher Intelligenz in automatisierten Workflows untersucht
+konkret am Beispiel der Integration von ChatGPT in das Open-Source-Automatisierungstool n8n. 
+Ziel ist es, die gesellschaftlichen und ethischen Folgen solcher Systeme zu bewerten. 
+Dabei wird ein konkreter Workflow dargestellt und durch eine Technikfolgenabschätzung analysiert. 
+Im Fokus stehen Fragen zur Verantwortung, Transparenz, Datenschutz sowie zur digitalen Souveränität. 
+Als theoretische Grundlage dient unter anderem der Artikel von Pohle und Thiel, der das Konzept digitaler Souveränität 
+im Kontext des Gemeinwohls diskutiert. Die Arbeit zeigt auf, wie wichtig ein kritischer Umgang 
+mit KI-basierten Automatisierungen ist insbesondere dann, wenn sie Entscheidungen beeinflussen, die vormals Menschen vorbehalten waren.
+\end{abstract}
+
+\begin{keywords}
+Digitale Souveränität, Künstliche Intelligenz, Technikfolgenabschätzung, ChatGPT, n8n, Automatisierung, Ethik, Datenschutz
+\end{keywords}
+
+\section{Einleitung}
+Künstliche Intelligenz ist längst fester Bestandteil unseres Alltags sei es im Konsumbereich, in der öffentlichen Verwaltung oder in Unternehmen. Besonders dynamisch ist die Entwicklung dort, wo KI-Systeme nicht nur einzelne Aufgaben unterstützen, sondern vollständig automatisierte Abläufe übernehmen. Ein aktuelles Beispiel dafür ist die Verbindung der generativen KI ChatGPT mit der Automatisierungsplattform n8n: E-Mails beantworten, Daten verarbeiten und Texte analysieren ganz ohne menschliches Zutun.
+
+Diese rasante Entwicklung wirft zentrale gesellschaftliche und ethische Fragen auf:
+Wie wirkt sich der Einsatz von KI auf Arbeitsprozesse, Verantwortungsverteilung und Datenschutz aus?
+Was passiert wenn automatisierte Systeme eigenständig Entscheidungen treffen und wer trägt dann die Verantwortung?
+Und vor allem: Wie kann verhindert werden, dass Menschen, Organisationen oder ganze Staaten die Kontrolle über digitale Prozesse verlieren?
+
+Genau hier setzt diese Arbeit an. Ziel ist es, die gesellschaftlichen Folgen solcher automatisierter KI-Workflows zu untersuchen insbesondere unter dem Aspekt der digitalen Souveränität einem Schlüsselbegriff in der aktuellen Digitalisierungsdebatte. Ein besonderer Fokus liegt auf dem Konzept der digitalen Souveränität. Es beschreibt die Fähigkeit von Menschen, Unternehmen und Staaten auch in einer digitalisierten Welt selbstbestimmt zu handeln. Wie Pohle und Thiel betonen, darf Digitalisierung nicht nur wirtschaftlich gedacht werden, sondern muss das Gemeinwohl und die demokratische Teilhabe in den Mittelpunkt stellen.
+
+Am Beispiel eines konkreten automatisierten Workflows mit ChatGPT und n8n werden Aufbau, Funktion und Nutzen dargestellt. In einer anschließenden Technikfolgenabschätzung werden dann Chancen, Risiken und gesellschaftliche Implikationen diskutiert mit dem Ziel, klare Kriterien für eine verantwortungsvolle Gestaltung solcher Technologien abzuleiten.
+
+
+
+
+
+\section{Technische Grundlagen: ChatGPT und n8n}
+ChatGPT ist ein sogenanntes Large Language Model, das von der Organisation OpenAI entwickelt wurde. Es basiert auf der modernen Transformer-Architektur, einem Verfahren aus dem Bereich des maschinellen Lernens. Solche Sprachmodelle werden mit enormen Mengen an Textdaten trainiert, um Muster, Bedeutungen und Zusammenhänge in der natürlichen Sprache zu erkennen. Das Besondere an ChatGPT ist seine Fähigkeit, Sprache nicht nur zu analysieren, sondern auch neue Inhalte zu generieren. Man spricht in diesem Zusammenhang von generativer Künstlicher Intelligenz. Das Modell kann kontextbezogene Antworten formulieren, Texte umschreiben oder zusammenfassen, programmieren helfen, Informationen bereitstellen oder sogar kreativ schreiben und das alles in natürlicher Sprache, die für Menschen leicht verständlich ist.
+
+In der Praxis kommt ChatGPT heute in vielen verschiedenen Bereichen zum Einsatz. Unternehmen nutzen es beispielsweise für den Kundenservice, um Anfragen automatisiert beantworten zu lassen. Auch im Bereich Marketing, Support, Wissensmanagement oder Datenanalyse findet das Modell Anwendung. Der Zugriff auf ChatGPT erfolgt dabei meist über eine Programmierschnittstelle (API), mit der es in bestehende digitale Systeme eingebunden werden kann.
+
+Ein solches System ist die Open-Source-Automatisierungsplattform n8n. Dabei handelt es sich um ein sogenanntes Low-Code-Tool, das es ermöglicht, ohne tiefgehende Programmierkenntnisse komplexe Workflows zu erstellen. In einer grafischen Benutzeroberfläche lassen sich verschiedene Funktionsbausteine sogenannte Nodes per Drag-and-Drop miteinander verbinden. So können zum Beispiel Prozesse definiert werden, die automatisch starten, sobald eine E-Mail eintrifft, ein Formular ausgefüllt wird oder eine neue Datei in der Cloud gespeichert wird. Durch die Integration von externen Diensten etwa der OpenAI-API lassen sich auch KI-Modelle wie ChatGPT problemlos in diese Abläufe einbinden.
+
+n8n bietet Unternehmen und Organisationen eine flexible Möglichkeit, wiederkehrende Aufgaben zu automatisieren. Der Quellcode ist offen, wodurch sich das Tool an eigene Datenschutzanforderungen anpassen lässt etwa durch die Möglichkeit, es lokal auf eigenen Servern zu betreiben. In Kombination mit ChatGPT kann n8n so eingesetzt werden, um automatisch auf Nachrichten zu reagieren, Texte zu analysieren, Inhalte weiterzuleiten oder Entscheidungen zu treffen. Beispielsweise ist es möglich, einen Prozess aufzubauen, bei dem eine Kundenanfrage eingeht, der Inhalt mit ChatGPT analysiert wird und anschließend automatisch eine passende Antwort generiert und verschickt wird.
+
+Typische Anwendungsbereiche solcher Systeme sind unter anderem die automatisierte Beantwortung von E-Mails, die Klassifikation und Kategorisierung von Texten, die Analyse von Kundenfeedback, die Vorverarbeitung von Daten oder auch die automatische Erstellung von Zusammenfassungen und Berichten. Durch die Verbindung von leistungsfähiger Sprachverarbeitung mit flexibler Prozesslogik entsteht eine neue Form der Prozessautomatisierung, bei der Maschinen nicht nur Befehle ausführen, sondern aktiv Inhalte interpretieren und darauf reagieren können.
+
+Diese technischen Grundlagen bilden die Basis für die folgende Fallstudie, in der ein konkreter Workflow mit ChatGPT und n8n näher betrachtet und anschließend hinsichtlich seiner gesellschaftlichen Auswirkungen bewertet wird.
+
+
+\section{Beispiele für die Nutzung spezieller Textelemente}
+
+Ein anschauliches Beispiel dafür, wie sich ein Sprachmodell wie ChatGPT in reale Unternehmensprozesse integrieren lässt, zeigt sich im Bereich des Kundenservice. Besonders bei häufig gestellten Fragen – etwa zu Lieferzeiten, Rücksendungen oder Produktdetails – bietet sich der Einsatz von Künstlicher Intelligenz an, um Mitarbeiter:innen zu entlasten und gleichzeitig die Reaktionszeit zu verkürzen.
+
+Auch wenn die verwendeten Quellen die Automatisierungsplattform n8n nicht direkt erwähnen, lässt sich der beschriebene Workflow sehr gut auf eine solche Umgebung übertragen. Plattformen wie n8n verbinden verschiedene Systeme miteinander – etwa E-Mail-Dienste, Datenbanken, Schnittstellen zur ChatGPT-API – und ermöglichen es, Abläufe logisch und automatisch zu steuern.
+
+Im ersten Schritt wird im Unternehmen eine sogenannte Vektordatenbank aufgebaut, beispielsweise mit Tools wie Pinecone oder Milvus. Dort werden alle relevanten Dokumente – von internen Richtlinien über FAQ-Artikel bis hin zu vergangenen Supportanfragen – gespeichert. Ein sogenanntes Embedding-Modell wandelt diese Texte in mathematische Vektoren um, die ihren Inhalt abbilden und vergleichbar machen. n8n kann dabei eingesetzt werden, um den gesamten Upload- und Verarbeitungsprozess zu automatisieren.
+
+Kommt nun eine Supportanfrage eines Kunden rein, z. B. per E-Mail oder Formular, wird diese automatisch in einen ähnlichen Vektor umgewandelt. Dann wird die Anfrage mit den gespeicherten Vektoren in der Datenbank verglichen, um ähnliche oder passende Inhalte zu finden – also beispielsweise frühere Antworten auf vergleichbare Fragen. Auch hier sorgt n8n für die reibungslose Verarbeitung.
+
+Im nächsten Schritt werden die relevanten Informationen zusammen mit der ursprünglichen Anfrage an die ChatGPT-API gesendet. ChatGPT erzeugt auf dieser Basis einen Antwortvorschlag, der sprachlich bereits ausgearbeitet ist. Dieser Entwurf geht nicht direkt an den Kunden, sondern wird zunächst einem Support-Mitarbeitenden angezeigt, der die Antwort prüft, gegebenenfalls ergänzt oder überarbeitet. Der Mitarbeitende kann auch mit ChatGPT weiter kommunizieren, um die Antwort noch besser an die Situation anzupassen. Sobald die finale Version fertig ist, wird sie an den Kunden gesendet.
+
+Abschließend kann der Workflow sogar noch weitergehen: Das System extrahiert aus der gelösten Anfrage neue Informationen, die für zukünftige Fälle nützlich sein könnten. Nach Bestätigung durch den Menschen werden diese Inhalte ebenfalls in die Vektordatenbank aufgenommen – der KI-Support lernt also mit jeder Interaktion ein Stück mehr dazu.
+
+Für Unternehmen ergeben sich daraus viele Vorteile: Routineanfragen lassen sich schneller und günstiger beantworten, die Servicequalität bleibt auf einem konstant hohen Niveau, und Mitarbeitende können sich auf komplexere Aufgaben konzentrieren. Gleichzeitig verändern sich die Anforderungen an das Personal: Statt selbst Texte zu formulieren, prüfen sie KI-Vorschläge, korrigieren sie bei Bedarf und stellen sicher, dass alles korrekt, freundlich und verständlich bleibt.
+
+Natürlich gibt es auch Herausforderungen. Sprachmodelle wie ChatGPT sind nicht fehlerfrei – sie können überzeugend klingende, aber falsche Inhalte generieren („Halluzinationen“) oder Verzerrungen aus Trainingsdaten übernehmen. Zudem sind die Entscheidungsprozesse oft schwer nachvollziehbar. Deshalb ist ein bewusster und kritischer Umgang mit solchen Systemen unerlässlich.
+
+Der beschriebene Prozess stellt eine sogenannte „Level-1“-Integration dar: Die KI wird genutzt, um Inhalte zu generieren, aber der Mensch hat immer das letzte Wort. Höhere Integrationsstufen, bei denen KI-Modelle selbstständig externe Dienste steuern oder gar eigenständig Aufgaben definieren, sind technisch bereits möglich – werfen aber noch tiefere gesellschaftliche und ethische Fragen auf.
+
+
+
+
+\section{Ethische Herausforderungen im Umgang mit KI-Systemen wie ChatGPT}
+Der Einsatz von Künstlicher Intelligenz, insbesondere von großen Sprachmodellen wie ChatGPT, bringt neben technischen Möglichkeiten auch viele ethische Fragen mit sich. Besonders dann, wenn solche Systeme in automatisierte Abläufe eingebunden sind, stellt sich die Frage, wer am Ende die Verantwortung für das übernimmt, was die Maschine entscheidet oder vorschlägt. Auch wenn Automatisierungsplattformen wie n8n helfen können, diese Abläufe technisch zu steuern, bleiben die eigentlichen ethischen Herausforderungen bestehen – vor allem, weil die inneren Abläufe eines Modells wie ChatGPT selbst von Entwicklerinnen und Entwicklern nicht vollständig durchschaubar sind.
+
+Ein zentrales Problem ist die Möglichkeit, dass KI-Systeme Inhalte erzeugen, die zwar überzeugend klingen, aber schlicht falsch sind. Diese sogenannten „Halluzinationen“ sind inhaltliche Fehler, die Nutzerinnen und Nutzer leicht in die Irre führen können, gerade weil sie auf den ersten Blick glaubwürdig wirken. Dazu kommt, dass solche Systeme mit riesigen Datenmengen aus dem Internet trainiert werden – und dabei auch Vorurteile, Stereotype und gesellschaftliche Verzerrungen mitlernen. Das kann sich in den generierten Antworten widerspiegeln, etwa durch bestimmte Formulierungen oder unausgewogene Darstellungen. Auch das Thema Intransparenz spielt eine große Rolle: Oft ist es unklar, wie genau ein Sprachmodell auf eine bestimmte Idee kommt. Selbst OpenAI erklärt offen, dass sie die Entscheidungsmechanismen ihrer Modelle nicht vollständig nachvollziehen können. Das erschwert die Einordnung und vor allem die Zuweisung von Verantwortung im Falle problematischer Inhalte.
+
+Hinzu kommt die Problematik rund um Datenschutz und Überwachung. Viele Nutzer geben – meist unbewusst – persönliche Informationen preis, wenn sie mit Chatbots oder KI-Systemen interagieren. Diese Daten können analysiert, weiterverarbeitet oder sogar für gezielte Werbung und Meinungsbeeinflussung genutzt werden. In Kombination mit Social Bots oder psychometrischer Profilbildung ergibt sich ein Bild, in dem die Nutzer selbst zu Quellen ihrer eigenen Überwachung werden – freiwillig und oft ohne es zu merken.
+
+Einige Zukunftsvisionen gehen sogar noch weiter. Es wird diskutiert, ob es irgendwann zu einer sogenannten technologischen Singularität kommt – also einem Punkt, an dem KI intelligenter wird als der Mensch. Einige Autoren befürchten, dass dies langfristig zu einer Art Maschinenherrschaft führen könnte, bei der eine kleine Elite die Kontrolle über extrem mächtige Systeme hat, während der Großteil der Gesellschaft kaum noch versteht, wie diese funktionieren. Ob solche Szenarien realistisch sind oder nicht, ist umstritten – sie zeigen aber, wie wichtig es ist, sich mit den ethischen Fragen jetzt schon auseinanderzusetzen.
+
+In der Praxis wird versucht, die Verantwortung beim Einsatz von KI sinnvoll zu verteilen. In dem zuvor beschriebenen Workflow im Kundenservice wird beispielsweise jede Antwort, die ChatGPT generiert, von einem menschlichen Mitarbeitenden geprüft, verbessert und dann erst verschickt. Der Mensch bleibt also im Zentrum der Entscheidung. Diese Rolle verändert sich allerdings: Aus der aktiven Formulierung wird zunehmend eine Funktion der Qualitätskontrolle. Mitarbeitende prüfen, korrigieren, geben Feedback – und nutzen die KI als Werkzeug zur Unterstützung, nicht als Ersatz. Einige Unternehmen gehen sogar so weit, eigene KI-Systeme zu entwickeln und intern zu betreiben, wie etwa dm mit „dmGPT“ oder Bosch mit „BoschGPT“. Dadurch behalten sie die Kontrolle über die verwendeten Daten und umgehen mögliche Datenschutzkonflikte mit externen Anbietern.
+
+Gleichzeitig wird diskutiert, wie stark die Verantwortung mit wachsender Komplexität und Autonomie von KI-Systemen neu gedacht werden muss. Auf der ersten Stufe der Integration (Level 1) bleibt der Mensch eingebunden. In Level 2 übernehmen KI-Systeme bereits externe Aktionen über APIs, und auf Level 3 setzen sie sich selbstständig Ziele und führen diese aus. In solchen Fällen ist es nicht mehr so einfach, klar zu sagen, wer am Ende die Verantwortung trägt.
+
+Um mit all diesen Herausforderungen besser umzugehen, braucht es verschiedene Maßnahmen. Aufklärung und Bildung sind essenziell – Menschen müssen verstehen, wie KI funktioniert und wo Risiken liegen. Staaten müssen klare Regeln schaffen, etwa zum Umgang mit Nutzerdaten oder zur Kontrolle großer Techkonzerne. Auch in der Forschung sollten Ethikkommissionen mitentscheiden, wie weit man mit bestimmten Projekten gehen darf. Und nicht zuletzt brauchen Unternehmen selbst mehr Know-how im Umgang mit KI. Das reicht von juristischen Fragen bis hin zu Fortbildungen und der Einrichtung interner Expertenteams, die sich speziell mit ethischen und sicherheitsrelevanten Fragen beschäftigen. Nur so lässt sich sicherstellen, dass die Integration von KI nicht nur technisch funktioniert, sondern auch gesellschaftlich verantwortungsvoll abläuft.
+
+\section{Auswirkungen auf Demokratie}
+
+Der zunehmende Einsatz von Künstlicher Intelligenz und automatisierten Systemen wirft nicht nur technische oder wirtschaftliche Fragen auf, sondern betrifft auch ganz unmittelbar die Grundlagen unserer demokratischen Gesellschaft. In verschiedenen Quellen wird deutlich, dass der Einfluss von KI und Big Data potenziell zu einem Verlust von Beteiligung und Mitbestimmung führen kann – insbesondere dann, wenn Entscheidungen zunehmend im Verborgenen getroffen und politische Prozesse durch Datenmacht gesteuert werden.
+
+Der britische Soziologe Colin Crouch spricht in diesem Zusammenhang von einer „Postdemokratie“. Damit beschreibt er eine Gesellschaftsform, in der demokratische Strukturen zwar noch formal existieren – etwa Wahlen oder Parlamente – die eigentlichen Entscheidungen jedoch zunehmend hinter verschlossenen Türen von wirtschaftlichen und technologischen Eliten gefällt werden. Große Konzerne kontrollieren dabei Informationen und Kommunikationskanäle und können somit die öffentliche Meinung gezielt beeinflussen oder kritische Stimmen ausblenden. Dies führt zu einer Aushöhlung demokratischer Institutionen, in der Transparenz, Rechenschaft und echte Teilhabe immer weiter in den Hintergrund geraten.
+
+Auch andere Stimmen warnen vor einem schleichenden Machtverlust des Staates. Es wird von einem „Neofeudalismus“ gesprochen, in dem nicht mehr gewählte Regierungen, sondern anonyme Märkte und Technologieunternehmen das Sagen haben. Der ehemalige US-Vizepräsident Al Gore sieht die Fähigkeit, über die eigene Zukunft zu entscheiden, immer mehr von politischen Systemen hin zu Märkten verlagert – wodurch die demokratische Selbstverwaltung zunehmend ihre Kraft verliert.
+
+Eine der größten Gefahren liegt dabei weniger in der Übernahme durch Maschinen, sondern vielmehr in der schrittweisen Selbstaufgabe des Menschen. Wenn Entscheidungen, Kommunikation und Bewertungen immer stärker von automatisierten Systemen getroffen werden, bleibt für den Menschen irgendwann nur noch die Rolle des Beobachters – oder sogar des Ausgegrenzten. In solchen Szenarien wird zwar vielleicht noch gewählt, aber die relevanten Entscheidungen sind längst automatisiert. Es entsteht eine Art „Pseudo-Demokratie“, in der eine kleine, gut vernetzte Elite – manchmal als „Daten-Priesterkaste“ bezeichnet – über digitale Infrastrukturen herrscht, während der Großteil der Gesellschaft den Algorithmen ausgeliefert ist. Die Intransparenz vieler KI-Systeme – etwa von Sprachmodellen wie ChatGPT – verschärft diese Entwicklung zusätzlich. Denn wenn nicht einmal die Entwickler genau verstehen, wie und warum bestimmte Entscheidungen zustande kommen, wird es nahezu unmöglich, Verantwortung klar zuzuweisen oder echte Mitsprache zu ermöglichen.
+
+Auch im öffentlichen Raum, etwa in Verwaltung, Bildung oder Behörden, wird KI-basierte Kommunikation zunehmend eingesetzt. Das bringt Vorteile, kann aber auch neue Probleme schaffen. Ein Beispiel dafür sind sogenannte Social Bots – automatisierte Profile in sozialen Netzwerken, die kaum noch von echten Menschen zu unterscheiden sind und gezielt eingesetzt werden, um politische Botschaften zu verbreiten oder Stimmung zu machen. Diese Entwicklung war beispielsweise im US-Wahlkampf deutlich zu beobachten. Ergänzend dazu ermöglichen Verfahren wie die Psychometrie, aus scheinbar harmlosen Daten – etwa Likes auf Social Media – detaillierte Persönlichkeitsprofile zu erstellen. Diese werden dann genutzt, um Werbung oder politische Botschaften extrem gezielt auszuspielen, ohne dass der Empfänger sich dessen bewusst ist.
+
+Sogar vermeintlich neutrale Plattformen wie change.org stehen im Verdacht, große Mengen an persönlichen Daten zu sammeln und gezielt weiterzugeben. Auch Unternehmen wie dm oder Bosch zeigen mit ihren eigenen KI-Systemen, dass es längst nicht mehr nur um Produktivität geht, sondern auch um Kontrolle über Kommunikation und Prozesse. Diese Entwicklungen, zunächst auf den privaten Sektor beschränkt, können ebenso auf den öffentlichen Bereich überschwappen und dort demokratische Abläufe beeinflussen.
+
+Besonders kritisch wird es, wenn KI-Systeme immer autonomer handeln. Während heute noch viele Systeme Wissen aufbereiten oder in Gesprächen unterstützen (Level 1), gibt es bereits erste Formen von sogenannten LLM-Agenten – also Systemen, die sich selbst Aufgaben geben, priorisieren und erledigen (Level 3). Sollte diese Technologie in Behörden oder öffentlichen Diensten eingesetzt werden, könnte das zu einer massiven Veränderung von Entscheidungsprozessen führen – mit kaum absehbaren Folgen für Mitbestimmung und Kontrolle.
+
+Diese Entwicklung birgt auch die Gefahr einer Entmenschlichung. Je weiter die Fähigkeiten intelligenter Maschinen voranschreiten, desto mehr stellt sich die Frage, welche Rolle der Mensch überhaupt noch spielt. In manchen Zukunftsvisionen – etwa von Yuval Noah Harari – ist bereits die Rede vom „Homo Deus“: einem technologisch erweiterten Menschen, der durch Daten und KI fast gottgleich wird. Andere warnen vor einem „Dataismus“, einer Art neuer Religion, in der alles dem Ziel untergeordnet wird, möglichst viele Daten zu sammeln und zu verarbeiten – egal, wie es um die menschliche Freiheit steht.
+
+Auch das Bild vom modernen „Panoptikum“ – einer Gesellschaft, in der Menschen sich freiwillig überwachen lassen – passt hier gut. Viele Nutzer liefern durch ihr Online-Verhalten, ihr Smartphone oder ihre Smart-Home-Geräte bereitwillig Daten, ohne zu wissen, wie weitreichend sie analysiert werden können. Daraus entsteht eine neue Form der Überwachung, die auf freiwilliger Selbstentblößung beruht – oft aus Bequemlichkeit oder Unwissenheit.
+
+In diesem Zusammenhang wird auch die Frage nach menschlicher Autonomie immer drängender. Wenn Entscheidungen nicht mehr selbst getroffen, sondern an KI-Systeme delegiert werden – in der Hoffnung, dass diese neutral oder effizienter handeln –, besteht die Gefahr, dass der Mensch seine Gestaltungskraft verliert. Um dem entgegenzuwirken, fordern viele Expert:innen eine Rückbesinnung auf kritisches Denken, eine Stärkung der Geisteswissenschaften und eine breite Auseinandersetzung mit digitaler Ethik. Es geht darum, die Fähigkeiten zur Reflexion und zur Mitgestaltung zu bewahren – auch angesichts verlockender technischer Lösungen.
+
+Nur wenn es gelingt, den Menschen im Zentrum zu halten – nicht nur technisch, sondern auch politisch und ethisch –, kann die Digitalisierung im Sinne der Demokratie weiterentwickelt werden. Bildung, Transparenz, Beteiligung und ein kritischer Umgang mit Daten und Technologie sind dafür unverzichtbare Voraussetzungen.
+
+\section{Chancen und Risiken}
+
+In den letzten Jahren hat sich der Begriff der digitalen Souveränität zu einem zentralen Thema in der europäischen Digitalpolitik entwickelt. Ursprünglich stammt der Begriff „Souveränität“ vom lateinischen „superanus“ ab, was so viel bedeutet wie „darüber befindlich“ oder „überlegen“. Heute meint digitale Souveränität die Fähigkeit von Einzelpersonen, Staaten und ganzen Regionen, in einer zunehmend vernetzten Welt selbstbestimmt und unabhängig zu handeln. In Europa wird dieser Begriff dabei eng mit dem Schutz demokratischer Werte und rechtsstaatlicher Prinzipien verknüpft. Es geht um nichts weniger als darum, technologische Abhängigkeiten zu verringern, eigene digitale Infrastrukturen wie 5G-Netze auszubauen, Kompetenzen in Bereichen wie Cybersicherheit zu stärken und langfristig konkurrenzfähig zu bleiben. Die Herausforderung besteht vor allem darin, dass Europa in vielen digitalen Schlüsselbereichen bislang stark auf die Angebote internationaler Großkonzerne angewiesen ist – was nicht nur wirtschaftliche, sondern auch politische und gesellschaftliche Risiken mit sich bringt.
+
+Ein zentrales Spannungsfeld ist dabei der Umgang mit Big Data und Künstlicher Intelligenz (KI). Diese Technologien ermöglichen es, riesige Datenmengen in Echtzeit zu erfassen und auszuwerten. Das eröffnet neue Möglichkeiten – beispielsweise in der Medizin, Verwaltung oder Wirtschaft –, birgt aber auch enorme Risiken. Die größten Gefahren liegen in der Verletzung von Persönlichkeitsrechten, der Aushebelung der Privatsphäre und dem möglichen Verlust an Unabhängigkeit, wenn Wissen und Informationen zunehmend von wenigen Konzernen kontrolliert werden. Plattformen wie Google, Facebook, Amazon oder Microsoft haben einen beispiellosen Einfluss auf unsere digitale Infrastruktur und prägen damit indirekt auch unsere gesellschaftliche Kommunikation, Meinungsbildung und sogar politische Entscheidungen.
+
+In diesem Zusammenhang tauchen immer wieder Begriffe wie „smarte Diktatur“ oder „Postdemokratie“ auf – Konzepte, die beschreiben, wie sich Macht immer stärker von demokratisch legitimierten Institutionen hin zu Märkten, Algorithmen und anonymen Akteuren verlagert. Technologien wie Psychometrie (also das Erstellen psychologischer Profile auf Basis von Social Media-Daten) und der Einsatz von Social Bots (automatisierten, menschlich wirkenden Profilen in sozialen Netzwerken) werden bereits heute genutzt, um gezielt Wählergruppen anzusprechen oder Meinung zu steuern. Besonders problematisch ist, dass Nutzerinnen und Nutzer dabei oft nicht wissen, wer eigentlich mit ihnen kommuniziert oder welches Ziel dahintersteckt.
+
+Hinzu kommt die Diskussion um die sogenannte technologische Singularität – also den Zeitpunkt, an dem Maschinen den Menschen in ihrer Intelligenz übertreffen könnten. Ob und wann dies tatsächlich eintritt, ist zwar umstritten, aber die Vorstellung allein wirft grundsätzliche Fragen darüber auf, welche Rolle der Mensch in einer zunehmend automatisierten Welt künftig noch spielen wird. Als Gegenmaßnahmen wird unter anderem gefordert, kritisches Denken zu fördern, IT-Monopole stärker zu regulieren und den Zugang zu Bildung – insbesondere in den Geistes- und Sozialwissenschaften – auszubauen.
+
+Auch in der Arbeitswelt, insbesondere in den Personalabteilungen großer Unternehmen, hält KI Schritt für Schritt Einzug. Zwar nutzen laut Studien derzeit erst rund fünf Prozent der deutschen Unternehmen KI-gestützte Systeme im Personalwesen – etwa zur Verwaltung von Verträgen oder bei der Bewerberauswahl –, doch ein Viertel plant bereits konkrete Schritte in diese Richtung. Ein Beispiel ist der Chatbot DB Smile, der den Bewerbungsprozess der Deutschen Bahn automatisiert begleitet. Während viele Unternehmen großes Potenzial in dieser Entwicklung sehen – vor allem in der Zeitersparnis und Standardisierung – bestehen auch deutliche Bedenken: Es fehlt häufig an internem Know-how, und rechtliche Fragen, etwa zum Datenschutz oder zur Fairness von Algorithmen, bleiben oft ungeklärt. Um dem zu begegnen, bilden viele Unternehmen interne Expertengruppen oder bieten Fortbildungen an. Klar ist aber auch: Der zunehmende Einsatz von KI im Personalbereich wird den Bedarf an IT-Fachkräften und Datenanalysten in Zukunft deutlich steigen lassen.
+
+Besonders deutlich wird das Potenzial von KI am Beispiel von ChatGPT – einem sogenannten Large Language Model (LLM), das Texte generieren, strukturieren und sogar menschenähnliche Dialoge führen kann. Nur zwei Monate nach seiner Veröffentlichung hatte ChatGPT über 100 Millionen aktive Nutzer und wurde damit zur am schnellsten wachsenden Anwendung der Internetgeschichte. Technisch basiert das Modell auf einer sogenannten Transformer-Architektur. Es sagt Wort für Wort voraus, welches Wort wahrscheinlich als Nächstes kommt – basierend auf Milliarden von Trainingsdaten. Je größer das Modell und die Datenbasis, desto besser kann es Sprache verstehen, argumentieren oder sogar Inhalte zusammenfassen.
+
+In Unternehmen lässt sich ChatGPT zum Beispiel über Vektordatenbanken mit eigenen Daten anreichern. Dadurch wird es möglich, Fragen von Kunden zu beantworten, die auf interne Dokumente und Wissensbestände zurückgreifen. In der Praxis bedeutet das: Kundenanfragen werden schneller beantwortet, die Qualität der Antworten bleibt konstant hoch, und Mitarbeitende müssen weniger Zeit mit Routineaufgaben verbringen. Sie konzentrieren sich stattdessen auf die Kontrolle, Nachbearbeitung und individuelle Betreuung – der Mensch wird also nicht ersetzt, sondern in seiner Arbeit unterstützt.
+
+Natürlich gibt es auch hier Risiken: ChatGPT kann falsche Informationen („Halluzinationen“) generieren oder unbeabsichtigt Vorurteile (Bias) aus den Trainingsdaten übernehmen. Zudem ist oft nicht nachvollziehbar, warum das System eine bestimmte Antwort gegeben hat. Trotzdem ist der wirtschaftliche Nutzen groß – und viele Unternehmen sind bereit, in die Integration solcher Systeme zu investieren, um langfristig wettbewerbsfähig zu bleiben.
+
+Zusammengefasst zeigt sich: Der Einsatz von KI und Sprachmodellen wie ChatGPT ist längst nicht mehr nur eine technische Frage, sondern berührt tiefgreifende gesellschaftliche Themen – von der Selbstbestimmung im digitalen Raum bis hin zur Zukunft unserer Arbeitswelt. Digitale Souveränität bedeutet deshalb heute nicht nur, eigene Server oder Software zu besitzen, sondern auch, die Kontrolle über Daten, Entscheidungen und demokratische Prozesse zu behalten. Dafür braucht es Wissen, Regeln – und vor allem den Mut, Technologie nicht nur als Fortschritt zu feiern, sondern auch kritisch zu hinterfragen.
+
+
+\subsection{Literaturverzeichnis}
+
+\begin{itemize}
+  \item Buxmann, P., Glauben, A. & Hendriks, P. (2024). Die Nutzung von ChatGPT in Unternehmen: Ein Fallbeispiel zur Neugestaltung von Serviceprozessen. HMD Praxis der Wirtschaftsinformatik, 61(2), 436–448.
+  
+  \item Garnitz, J. & Schaller, D. (2023). ChatGPT, Chatbots und mehr – wie wird Künstliche Intelligenz in den HR-Abteilungen von Unternehmen genutzt? ifo Schnelldienst, 76(09), 65–68.
+  
+  \item Hesse, W. (2020). Das Zerstörungspotenzial von Big Data und Künstlicher Intelligenz für die Demokratie. Informatik Spektrum, 43(4), 339–346.
+  
+  \item Pohle, J. & Thiel, T. (2020). Digitale Souveränität: Der Wert der Digitalisierung. ifo Institut – Leibniz-Institut für Wirtschaftsforschung an der Universität München. Online veröffentlicht am 03.07.2020.
+\end{itemize}
+
+
+
+
+
+%% \bibliography{lni-paper-example-de.tex} ist hier nicht erlaubt: biblatex erwartet dies bei der Preambel
+%% Starten Sie "biber paper", um eine Biliographie zu erzeugen.
+\printbibliography
+
+\end{document}

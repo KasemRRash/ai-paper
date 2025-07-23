@@ -45,15 +45,15 @@
 %%% Mehrere Autoren werden durch \and voneinander getrennt.
 %%% Die Fußnote enthält die Adresse sowie eine E-Mail-Adresse.
 %%% Das optionale Argument (sofern angegeben) wird für die Kopfzeile verwendet.
-\title[Ein Kurztitel]{Ein sehr langer Titel über mehrere Zeilen mit sehr vielen Worten und noch mehr Buchstaben}
+\title[Ein Kurztitel]{Automatisierte Entscheidungsprozesse mit KI. Eine Technikfolgenabschätzung am Beispiel von ChatGPT-Integrationen mit n8n}
 %%%\subtitle{Untertitel / Subtitle} % falls benötigt
 
 
 %%% username1, Matrikelnummer1, username2, Matrikelnummer2
 %%%
 %%%
-\author[Vorname1 Nachname1, Vorname2 Nachname2]
-{Vorname1 Nachname1, Vorname2 Nachname2 \\ 
+\author[Kasem Rashrash 41398, Yunes Ghanbari 40639]
+{Kasem Rashrash 41398, Yunes Ghanbari 40639\\ 
 Hochschule Bremerhaven}
 \startpage{1} % Beginn der Seitenzählung für diesen Beitrag
 \editor{Oliver Radfelder und Karin Vosseberg}    % Namen der Herausgeber
@@ -63,23 +63,60 @@ Hochschule Bremerhaven}
 \maketitle
 
 \begin{abstract}
-Der Abstract ist ein kurzer Überblick über die Arbeit der zwischen 70 und 150 Wörtern lang sein und das Wichtigste enthalten sollte.
-Die Formatierung erfolgt automatisch innerhalb des abstract-Bereichs.
+Im Rahmen dieser Arbeit wird der Einsatz von Künstlicher Intelligenz in automatisierten Workflows untersucht
+konkret am Beispiel der Integration von ChatGPT in das Open-Source-Automatisierungstool n8n. 
+Ziel ist es, die gesellschaftlichen und ethischen Folgen solcher Systeme zu bewerten. 
+Dabei wird ein konkreter Workflow dargestellt und durch eine Technikfolgenabschätzung analysiert. 
+Im Fokus stehen Fragen zur Verantwortung, Transparenz, Datenschutz sowie zur digitalen Souveränität. 
+Als theoretische Grundlage dient unter anderem der Artikel von Pohle und Thiel, der das Konzept digitaler Souveränität 
+im Kontext des Gemeinwohls diskutiert. Die Arbeit zeigt auf, wie wichtig ein kritischer Umgang 
+mit KI-basierten Automatisierungen ist insbesondere dann, wenn sie Entscheidungen beeinflussen, die vormals Menschen vorbehalten waren.
 \end{abstract}
 
 \begin{keywords}
-Liste von wichtigsten Keyworten mit Komma getrennt
+Digitale Souveränität, Künstliche Intelligenz, Technikfolgenabschätzung, ChatGPT, n8n, Automatisierung, Ethik, Datenschutz
 \end{keywords}
 
 \section{Einleitung}
-kurze Einführung in das Thema
+Künstliche Intelligenz ist längst fester Bestandteil unseres Alltags sei es im Konsumbereich, in der öffentlichen Verwaltung oder in Unternehmen. Besonders dynamisch ist die Entwicklung dort, wo KI-Systeme nicht nur einzelne Aufgaben unterstützen, sondern vollständig automatisierte Abläufe übernehmen. Ein aktuelles Beispiel dafür ist die Verbindung der generativen KI ChatGPT mit der Automatisierungsplattform n8n: E-Mails beantworten, Daten verarbeiten und Texte analysieren ganz ohne menschliches Zutun.
 
-\section{weitere Überschrift}
-%blindtext rausnehmen und durch Text ersetzen
+Diese rasante Entwicklung wirft zentrale gesellschaftliche und ethische Fragen auf:
+Wie wirkt sich der Einsatz von KI auf Arbeitsprozesse, Verantwortungsverteilung und Datenschutz aus?
+Was passiert wenn automatisierte Systeme eigenständig Entscheidungen treffen und wer trägt dann die Verantwortung?
+Und vor allem: Wie kann verhindert werden, dass Menschen, Organisationen oder ganze Staaten die Kontrolle über digitale Prozesse verlieren?
+
+Genau hier setzt diese Arbeit an. Ziel ist es, die gesellschaftlichen Folgen solcher automatisierter KI-Workflows zu untersuchen insbesondere unter dem Aspekt der digitalen Souveränität einem Schlüsselbegriff in der aktuellen Digitalisierungsdebatte. Ein besonderer Fokus liegt auf dem Konzept der digitalen Souveränität. Es beschreibt die Fähigkeit von Menschen, Unternehmen und Staaten auch in einer digitalisierten Welt selbstbestimmt zu handeln. Wie Pohle und Thiel betonen, darf Digitalisierung nicht nur wirtschaftlich gedacht werden, sondern muss das Gemeinwohl und die demokratische Teilhabe in den Mittelpunkt stellen.
+
+Am Beispiel eines konkreten automatisierten Workflows mit ChatGPT und n8n werden Aufbau, Funktion und Nutzen dargestellt. In einer anschließenden Technikfolgenabschätzung werden dann Chancen, Risiken und gesellschaftliche Implikationen diskutiert mit dem Ziel, klare Kriterien für eine verantwortungsvolle Gestaltung solcher Technologien abzuleiten.
+
+
+\section{Technische Grundlagen: ChatGPT und n8n}
+ChatGPT ist ein sogenanntes Large Language Model, das von der Organisation OpenAI entwickelt wurde. Es basiert auf der modernen Transformer-Architektur, einem Verfahren aus dem Bereich des maschinellen Lernens. Solche Sprachmodelle werden mit enormen Mengen an Textdaten trainiert, um Muster, Bedeutungen und Zusammenhänge in der natürlichen Sprache zu erkennen. Das Besondere an ChatGPT ist seine Fähigkeit, Sprache nicht nur zu analysieren, sondern auch neue Inhalte zu generieren. Man spricht in diesem Zusammenhang von generativer Künstlicher Intelligenz. Das Modell kann kontextbezogene Antworten formulieren, Texte umschreiben oder zusammenfassen, programmieren helfen, Informationen bereitstellen oder sogar kreativ schreiben und das alles in natürlicher Sprache, die für Menschen leicht verständlich ist.
+
+In der Praxis kommt ChatGPT heute in vielen verschiedenen Bereichen zum Einsatz. Unternehmen nutzen es beispielsweise für den Kundenservice, um Anfragen automatisiert beantworten zu lassen. Auch im Bereich Marketing, Support, Wissensmanagement oder Datenanalyse findet das Modell Anwendung. Der Zugriff auf ChatGPT erfolgt dabei meist über eine Programmierschnittstelle (API), mit der es in bestehende digitale Systeme eingebunden werden kann.
+
+Ein solches System ist die Open-Source-Automatisierungsplattform n8n. Dabei handelt es sich um ein sogenanntes Low-Code-Tool, das es ermöglicht, ohne tiefgehende Programmierkenntnisse komplexe Workflows zu erstellen. In einer grafischen Benutzeroberfläche lassen sich verschiedene Funktionsbausteine sogenannte Nodes per Drag-and-Drop miteinander verbinden. So können zum Beispiel Prozesse definiert werden, die automatisch starten, sobald eine E-Mail eintrifft, ein Formular ausgefüllt wird oder eine neue Datei in der Cloud gespeichert wird. Durch die Integration von externen Diensten etwa der OpenAI-API lassen sich auch KI-Modelle wie ChatGPT problemlos in diese Abläufe einbinden.
+
+n8n bietet Unternehmen und Organisationen eine flexible Möglichkeit, wiederkehrende Aufgaben zu automatisieren. Der Quellcode ist offen, wodurch sich das Tool an eigene Datenschutzanforderungen anpassen lässt etwa durch die Möglichkeit, es lokal auf eigenen Servern zu betreiben. In Kombination mit ChatGPT kann n8n so eingesetzt werden, um automatisch auf Nachrichten zu reagieren, Texte zu analysieren, Inhalte weiterzuleiten oder Entscheidungen zu treffen. Beispielsweise ist es möglich, einen Prozess aufzubauen, bei dem eine Kundenanfrage eingeht, der Inhalt mit ChatGPT analysiert wird und anschließend automatisch eine passende Antwort generiert und verschickt wird.
+
+Typische Anwendungsbereiche solcher Systeme sind unter anderem die automatisierte Beantwortung von E-Mails, die Klassifikation und Kategorisierung von Texten, die Analyse von Kundenfeedback, die Vorverarbeitung von Daten oder auch die automatische Erstellung von Zusammenfassungen und Berichten. Durch die Verbindung von leistungsfähiger Sprachverarbeitung mit flexibler Prozesslogik entsteht eine neue Form der Prozessautomatisierung, bei der Maschinen nicht nur Befehle ausführen, sondern aktiv Inhalte interpretieren und darauf reagieren können.
+
+Diese technischen Grundlagen bilden die Basis für die folgende Fallstudie, in der ein konkreter Workflow mit ChatGPT und n8n näher betrachtet und anschließend hinsichtlich seiner gesellschaftlichen Auswirkungen bewertet wird.
+
 \blindtext
 
 \section{Beispiele für die Nutzung spezieller Textelemente}
-Hier kommen ein paar Beispiele für Textelemente wie Literaturhinweise, Abbildungen, Tabellen und Verlinkungen zu den jeweiligen Elementen.
+ChatGPT ist ein sogenanntes Large Language Model, das von der Organisation OpenAI entwickelt wurde. Es basiert auf der modernen Transformer-Architektur, einem Verfahren aus dem Bereich des maschinellen Lernens. Solche Sprachmodelle werden mit enormen Mengen an Textdaten trainiert, um Muster, Bedeutungen und Zusammenhänge in der natürlichen Sprache zu erkennen. Das Besondere an ChatGPT ist seine Fähigkeit, Sprache nicht nur zu analysieren, sondern auch neue Inhalte zu generieren. Man spricht in diesem Zusammenhang von generativer Künstlicher Intelligenz. Das Modell kann kontextbezogene Antworten formulieren, Texte umschreiben oder zusammenfassen, programmieren helfen, Informationen bereitstellen oder sogar kreativ schreiben und das alles in natürlicher Sprache, die für Menschen leicht verständlich ist.
+
+In der Praxis kommt ChatGPT heute in vielen verschiedenen Bereichen zum Einsatz. Unternehmen nutzen es beispielsweise für den Kundenservice, um Anfragen automatisiert beantworten zu lassen. Auch im Bereich Marketing, Support, Wissensmanagement oder Datenanalyse findet das Modell Anwendung. Der Zugriff auf ChatGPT erfolgt dabei meist über eine Programmierschnittstelle (API), mit der es in bestehende digitale Systeme eingebunden werden kann.
+
+Ein solches System ist die Open-Source-Automatisierungsplattform n8n. Dabei handelt es sich um ein sogenanntes Low-Code-Tool, das es ermöglicht, ohne tiefgehende Programmierkenntnisse komplexe Workflows zu erstellen. In einer grafischen Benutzeroberfläche lassen sich verschiedene Funktionsbausteine sogenannte Nodes per Drag-and-Drop miteinander verbinden. So können zum Beispiel Prozesse definiert werden, die automatisch starten, sobald eine E-Mail eintrifft, ein Formular ausgefüllt wird oder eine neue Datei in der Cloud gespeichert wird. Durch die Integration von externen Diensten etwa der OpenAI-API lassen sich auch KI-Modelle wie ChatGPT problemlos in diese Abläufe einbinden.
+
+n8n bietet Unternehmen und Organisationen eine flexible Möglichkeit, wiederkehrende Aufgaben zu automatisieren. Der Quellcode ist offen, wodurch sich das Tool an eigene Datenschutzanforderungen anpassen lässt etwa durch die Möglichkeit, es lokal auf eigenen Servern zu betreiben. In Kombination mit ChatGPT kann n8n so eingesetzt werden, um automatisch auf Nachrichten zu reagieren, Texte zu analysieren, Inhalte weiterzuleiten oder Entscheidungen zu treffen. Beispielsweise ist es möglich, einen Prozess aufzubauen, bei dem eine Kundenanfrage eingeht, der Inhalt mit ChatGPT analysiert wird und anschließend automatisch eine passende Antwort generiert und verschickt wird.
+
+Typische Anwendungsbereiche solcher Systeme sind unter anderem die automatisierte Beantwortung von E-Mails, die Klassifikation und Kategorisierung von Texten, die Analyse von Kundenfeedback, die Vorverarbeitung von Daten oder auch die automatische Erstellung von Zusammenfassungen und Berichten. Durch die Verbindung von leistungsfähiger Sprachverarbeitung mit flexibler Prozesslogik entsteht eine neue Form der Prozessautomatisierung, bei der Maschinen nicht nur Befehle ausführen, sondern aktiv Inhalte interpretieren und darauf reagieren können.
+
+Diese technischen Grundlagen bilden die Basis für die folgende Fallstudie, in der ein konkreter Workflow mit ChatGPT und n8n näher betrachtet und anschließend hinsichtlich seiner gesellschaftlichen Auswirkungen bewertet wird.
 
 \subsection{Literaturverzeichnis}
 Der letzte Abschnitt zeigt ein beispielhaftes Literaturverzeichnis für Bücher mit einem Autor \cite{Ez10} und zwei AutorInnen \cite{AB00}, einem Beitrag in Proceedings mit drei AutorInnen \cite{ABC01}, einem Beitrag in einem LNI Band mit mehr als drei AutorInnen \cite{Az09}, zwei Bücher mit den jeweils selben vier AutorInnen im selben Erscheinungsjahr \cite{Wa14} und \cite{Wa14b}, ein Journal \cite{Gl06}, eine Website \cite{GI19} bzw.\ anderweitige Literatur ohne konkrete AutorInnenschaft \cite{XX14}.
@@ -88,6 +125,29 @@ Es wird biblatex verwendet, da es UTF8 sauber unterstützt und \href{https://git
 Formatierung und Abkürzungen werden für die Referenzen \texttt{book}, \texttt{inbook}, \texttt{proceedings}, \texttt{inproceedings}, \texttt{article}, \texttt{online} und \texttt{misc} automatisch vorgenommen.
 Mögliche Felder für Referenzen können der Beispieldatei \texttt{lni-paper-example-de.bib} entnommen werden.
 Andere Referenzen sowie Felder müssen allenfalls nachträglich angepasst werden.
+
+QUELLEN:
+Wolfgang Hesse1
+Online publiziert: 3. Juli 2020
+
+
+: Garnitz, Johanna; Schaller, Daria (2023) : ChatGPT, Chatbots und mehr – wie
+wird Künstliche Intelligenz in den HR-Abteilungen von Unternehmen genutzt?, ifo Schnelldienst,
+ISSN 0018-974X, ifo Institut - Leibniz-Institut für Wirtschaftsforschung an der Universität München,
+München, Vol. 76, Iss. 09, pp. 65-68
+
+
+Die Nutzung von ChatGPT in Unternehmen: Ein
+Fallbeispiel zur Neugestaltung von Serviceprozessen
+Peter Buxmann · Adrian Glauben · Patrick Hendriks
+Eingegangen: 6. Juli 2024
+
+Julia Pohle "Digitale Souverinität"
+
+1. Buxmann, P., Glauben, A., & Hendriks, P. (2024). Die Nutzung von ChatGPT in Unternehmen: Ein Fallbeispiel zur Neugestaltung von Serviceprozessen. HMD Praxis der Wirtschaftsinformatik, 61(2), 436–448.
+2. Garnitz, J., & Schaller, D. (2023). ChatGPT, Chatbots und mehr – wie wird Künstliche Intelligenz in den HR-Abteilungen von Unternehmen genutzt? ifo Schnelldienst, 76(09), 65–68.
+3. Hesse, W. (2020). Das Zerstörungspotenzial von Big Data und Künstlicher Intelligenz für die Demokratie. Informatik Spektrum, 43(4), 339–346.
+4. Pohle, J., & Thiel, T. (2020). Digitale Souveränität: Der Wert der Digitalisierung. ifo Institut – Leibniz-Institut für Wirtschaftsforschung an der Universität München
 
 \subsection{Abbildungen}
 \Cref{fig:demo} zeigt eine Abbildung.
